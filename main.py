@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 def main(config_name='default'):
     app.config.from_object(config[config_name])
-    app.register_blueprint(users_api.blueprint)
     db_session.global_init("db/db.db")
+    app.register_blueprint(users_api.blueprint)
     app.run()
 
 

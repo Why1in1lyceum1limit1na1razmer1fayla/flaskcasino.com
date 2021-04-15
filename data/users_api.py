@@ -1,7 +1,7 @@
 import flask
 from flask import request, make_response
-import db_session
-from users import User
+from . import db_session
+from .users import User
 import hashlib
 import os
 
