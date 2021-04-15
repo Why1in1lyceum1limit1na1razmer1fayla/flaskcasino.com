@@ -4,8 +4,6 @@ from config import config
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'very_secret_key'
-
 
 def main(config_name='default'):
     app.config.from_object(config[config_name])
