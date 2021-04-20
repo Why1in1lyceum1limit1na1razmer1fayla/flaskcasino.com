@@ -7,6 +7,7 @@ import os
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
+from flask_login import login_user
 
 blueprint = flask.Blueprint(
     'users_api',
@@ -51,6 +52,8 @@ def login():
             if user.password_hash == hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
                                                          user.salt, 20000):
                 session.close()
+                login_user(user, remember=form.remember_me.data)
+
                 return make_response({'successful': 'user logined'}, 201)
             else:
                 session.close()
@@ -87,6 +90,7 @@ def registration():
                     session.add(user)
                     session.commit()
                     session.close()
+                    login_user(user, remember=form.remember_me.data)
                     return make_response({'successful': 'user created'}, 201)
                 else:
                     session.close()
