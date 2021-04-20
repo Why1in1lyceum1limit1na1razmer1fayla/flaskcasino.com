@@ -1,5 +1,5 @@
 import flask
-from flask import request, make_response, render_template
+from flask import request, make_response, render_template, redirect
 from . import db_session
 from .users import User
 import hashlib
@@ -52,9 +52,10 @@ def login():
             if user.password_hash == hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'),
                                                          user.salt, 20000):
                 session.close()
+                print(user)
                 login_user(user, remember=form.remember_me.data)
 
-                return make_response({'successful': 'user logined'}, 201)
+                return redirect('/profile')
             else:
                 session.close()
                 return render_template('login.html', message=[
@@ -91,7 +92,7 @@ def registration():
                     session.commit()
                     session.close()
                     login_user(user, remember=form.remember_me.data)
-                    return make_response({'successful': 'user created'}, 201)
+                    return redirect('/profile')
                 else:
                     session.close()
                     return render_template('registration.html', message=[
