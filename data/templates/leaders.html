@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Личный кабинет</title>
+    <title>Списки лидеров</title>
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
@@ -32,10 +32,14 @@
 </nav>
 
 <header class="text-center text-white bg-primary masthead">
-    <div class="container">
-        <h1>{{current_user.login}}, приветствуем вас!</h1>
-        <h1>На вашем балансе {{current_user.money}} денег</h1>
-    </div>
+    <table class="table table-striped">
+        {%for user in users%}
+        <tr>
+            <td>{{user.login}}</td>
+            <td>{{user.money}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </header>
 <section id="portfolio" class="portfolio">
     <div class="container">
@@ -94,8 +98,8 @@
     </div>
 </section>
 <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="static/js/freelancer.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="static/js/freelancer.js"></script>
 </body>
 </html>
