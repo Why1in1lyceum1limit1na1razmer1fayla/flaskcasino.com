@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>login</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/Pretty-Registration-Form.css">
+</head>
+
+<body>
+<div class="row register-form">
+    <div class="col-md-8 offset-md-2">
+        <form action="" method="post" novalidate class="custom-form"><h1>ФЕЙСКОНТРОЛЬ В КАЗИНО</h1>
+            {{ form.hidden_tag() }}
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Имя</label>
+                </div>
+                <div class="col-sm-6 input-column">{{ form.username(class="form-control") }}
+                    {% for error in form.username.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field">Пароль&nbsp;</label>
+                </div>
+                <div class="col-sm-6 input-column">{{ form.password(class="form-control") }}
+                    {% for error in form.password.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="form-check">{{ form.remember_me(class="form-check-input", id="formCheck-2") }}<label
+                    class="form-check-label" for="formCheck-2">Запомнить меня</label>
+            </div>
+            {{ form.submit(type="submit", class="btn btn-primary") }}
+        </form>
+        {% for i in message %}
+        <div class="alert alert-danger" role="alert">
+            {{i}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="static/js/freelancer.js"></script>
+</body>
+
+</html>
