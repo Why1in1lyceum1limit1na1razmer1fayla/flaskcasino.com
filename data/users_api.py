@@ -91,6 +91,7 @@ def registration():
                     session.add(user)
                     session.commit()
                     session.close()
+                    user = session.query(User).filter(User.login == login).first()
                     login_user(user, remember=form.remember_me.data)
                     return redirect('/profile')
                 else:
