@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from data import db_session, users_api, casino_api
+from data import db_session, users_api, casino_api, Guess_the_number
 from config import config
 from flask_login import LoginManager
 from data.users import User
@@ -21,6 +21,7 @@ def main(config_name='default'):
     db_session.global_init("db/db.db")
     app.register_blueprint(users_api.blueprint)
     app.register_blueprint(casino_api.blueprint)
+    app.register_blueprint(Guess_the_number.blueprint)
     app.run()
 
 
